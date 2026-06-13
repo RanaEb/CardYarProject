@@ -1,0 +1,29 @@
+"use client";
+
+import "./globals.css";
+import { useState } from "react";
+import Sidebar from "@/app/components/Sidebar";
+import { Menu } from "lucide-react";
+
+export default function RootLayout({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <html lang="fa" dir="rtl">
+      <body>
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="fixed top-4 right-4 z-50 bg-white p-2 rounded-lg shadow-md"
+        >
+          <Menu size={24} />
+        </button>
+
+        {/* سایدبار */}
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+        {/* محتوای صفحات */}
+        {children}
+      </body>
+    </html>
+  );
+}
