@@ -85,8 +85,8 @@ function SummariesReviewContent() {
           </div>
         ) : filteredSummaries.length === 0 ? (
           <div className="bg-white border border-slate-300 rounded-2xl p-10 text-center">
-            <p className="text-gray-700 mb-2">
-              برای این درس و فصل خلاصه‌ای پیدا نشد
+            <p className="text-red-500 mb-2">
+             برای این درس و فصل خلاصه‌ای پیدا نشد!
             </p>
 
             <p className="text-sm text-gray-500 mb-6">
@@ -101,11 +101,7 @@ function SummariesReviewContent() {
               ثبت نشده است
             </p>
 
-            <Link href="/review">
-              <Button variant="back" size="lg">
-                بازگشت
-              </Button>
-            </Link>
+          
           </div>
         ) : (
           <div className="grid gap-4">
