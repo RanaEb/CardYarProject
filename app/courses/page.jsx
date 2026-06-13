@@ -28,7 +28,6 @@ import {
   DndContext,
   closestCenter,
   PointerSensor,
-  TouchSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
@@ -67,11 +66,9 @@ export default function CoursesPage() {
   const [openCourse, setOpenCourse] = useState(null);
   const [chapterInputs, setChapterInputs] = useState({});
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(TouchSensor, {
+    useSensor(PointerSensor, {
       activationConstraint: {
-        delay: 150,
-        tolerance: 5,
+        distance: 5,
       },
     }),
   );
@@ -355,10 +352,9 @@ export default function CoursesPage() {
                                   <div className="flex items-center gap-3">
                                     {/* DRAG HANDLE */}
                                     <button
-                                      className="text-slate-400 hover:text-[#0077C8] cursor-grab active:cursor-grabbing"
+                                      className="text-slate-400 hover:text-[#0077C8] cursor-grab active:cursor-grabbing touch-none"
                                       {...attributes}
                                       {...listeners}
-                                      onClick={(e) => e.preventDefault()}
                                     >
                                       <GripVertical size={18} />
                                     </button>
