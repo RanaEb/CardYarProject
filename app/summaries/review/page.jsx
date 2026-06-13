@@ -1,15 +1,21 @@
 "use client";
-export const dynamic = "force-dynamic";
 
-
+import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import { FileText } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import Button from "@/app/components/ui/button";
 import { getSummaries, getCourses } from "@/app/lib/storage";
 
 export default function SummariesReviewPage() {
+  return (
+    <Suspense fallback={null}>
+      <SummariesReviewContent />
+    </Suspense>
+  );
+}
+
+function SummariesReviewContent() {
   const [summaries, setSummaries] = useState([]);
   const [courses, setCourses] = useState([]);
   const searchParams = useSearchParams();
@@ -44,7 +50,6 @@ export default function SummariesReviewPage() {
   return (
     <div className="min-h-screen bg-[#fcfcfd] px-6 py-10">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="flex items-center gap-3 mb-10">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E6FBF8] text-[#22B8A6]">
             <FileText size={22} />
@@ -56,14 +61,12 @@ export default function SummariesReviewPage() {
             </h1>
 
             <p className="text-sm text-gray-500 mt-2">
-              {selectedCourse?.title || "درس نامشخص"}
-              {" - "}
+              {selectedCourse?.title || "درس نامشخص"} -{" "}
               {selectedChapter?.title || "فصل نامشخص"}
             </p>
           </div>
         </div>
 
-        {/* Content */}
         {!courseId || !chapterId ? (
           <div className="bg-[#FEEAEC] border border-[#F5AEB5] rounded-2xl p-10 text-center">
             <p className="text-[#B4232C] mb-2">
@@ -84,12 +87,13 @@ export default function SummariesReviewPage() {
             <p className="text-gray-700 mb-2">
               برای این درس و فصل خلاصه‌ای پیدا نشد
             </p>
+
             <p className="text-sm text-gray-500 mb-6">
               خلاصه‌ای برای{" "}
               <span className="font-medium">
                 {selectedCourse?.title || "درس نامشخص"}
-              </span>
-              {" / "}
+              </span>{" "}
+              /{" "}
               <span className="font-medium">
                 {selectedChapter?.title || "فصل نامشخص"}
               </span>{" "}
