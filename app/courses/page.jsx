@@ -297,6 +297,7 @@ export default function CoursesPage() {
                   {/* DRAGGABLE LIST */}
                   {course.chapters?.length > 0 ? (
                     <DndContext
+                     sensors={sensors}
                       collisionDetection={closestCenter}
                       onDragEnd={(event) => {
                         const { active, over } = event;
