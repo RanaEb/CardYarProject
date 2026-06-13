@@ -51,7 +51,7 @@ function SummariesReviewContent() {
   return (
     <div className="min-h-screen bg-[#fcfcfd] px-6 py-10">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-3 mb-10 mt-12">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E6FBF8] text-[#22B8A6]">
             <FileText size={22} />
           </div>

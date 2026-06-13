@@ -67,10 +67,10 @@ export default function ReviewHome() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfcfd] flex items-center justify-center px-6">
-      <div className="w-full max-w-xl">
+    <div className="min-h-screen bg-[#fcfcfd] p-6">
+      <div className="mx-auto max-w-3xl">
         {/* HEADER */}
-        <div className="flex flex-row items-center gap-3 mb-12">
+        <div className="flex flex-row items-center gap-3 mb-12 mt-12">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#ECFEFF] text-[#00AEC2]">
             <Brain size={22} />
           </div>
