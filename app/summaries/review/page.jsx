@@ -6,6 +6,7 @@ import { FileText } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import Button from "@/app/components/ui/button";
 import { getSummaries, getCourses } from "@/app/lib/storage";
+import { marked } from "marked";
 
 export default function SummariesReviewPage() {
   return (
@@ -118,9 +119,10 @@ function SummariesReviewContent() {
                   {selectedChapter?.title || "فصل نامشخص"}
                 </p>
 
-                <p className="text-sm text-gray-600 leading-7 whitespace-pre-line">
-                  {s.content}
-                </p>
+                <div
+                  className="text-sm text-gray-600 leading-7 prose prose-sm"
+                  dangerouslySetInnerHTML={{ __html: marked(s.content || "") }}
+                />
               </div>
             ))}
           </div>
