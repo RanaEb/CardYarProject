@@ -24,7 +24,14 @@ import {
 } from "lucide-react";
 
 // DnD KIT
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 
 import {
   SortableContext,
@@ -59,6 +66,15 @@ export default function CoursesPage() {
   const [newCourse, setNewCourse] = useState("");
   const [openCourse, setOpenCourse] = useState(null);
   const [chapterInputs, setChapterInputs] = useState({});
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 150,
+        tolerance: 5,
+      },
+    }),
+  );
 
   useEffect(() => {
     const profile = getUserProfile();
@@ -297,7 +313,7 @@ export default function CoursesPage() {
                   {/* DRAGGABLE LIST */}
                   {course.chapters?.length > 0 ? (
                     <DndContext
-                     sensors={sensors}
+                      sensors={sensors}
                       collisionDetection={closestCenter}
                       onDragEnd={(event) => {
                         const { active, over } = event;
