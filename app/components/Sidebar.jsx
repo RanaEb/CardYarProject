@@ -30,7 +30,7 @@ export default function Sidebar({ open, onClose }) {
       color: "#00AEC2",
     },
     {
-      href: "/courses",
+      href: "/courses2",
       label: "درس‌ها",
       icon: BookOpen,
       description: "مدیریت لیست درس‌ها",

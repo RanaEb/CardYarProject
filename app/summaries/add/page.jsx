@@ -44,7 +44,7 @@ export default function AddSummaryPage() {
 
     addSummary(newSummary);
 
-    router.push(`/courses/${courseId}/chapters/${chapterId}/summary`);
+    router.push(`/courses2/${courseId}/chapters/${chapterId}/summary`);
   };
 
   return (

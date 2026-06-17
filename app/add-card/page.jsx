@@ -66,7 +66,7 @@ export default function AddCardPage() {
     };
 
     addFlashcard(newCard);
-    router.push(`/courses/${courseId}/chapters/${chapterId}`);
+    router.push(`/courses2/${courseId}/chapters/${chapterId}`);
   };
 
   return (

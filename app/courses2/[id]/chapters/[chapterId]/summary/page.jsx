@@ -20,7 +20,6 @@ export default function SummaryPage() {
     setSummary(s);
   }, [courseId, chapterId]);
 
-  // حالت خالی (اگر خلاصه وجود نداشته باشد)
   if (!summary) {
     return (
       <div className="min-h-screen bg-slate-50 p-6" dir="rtl">
@@ -42,14 +41,14 @@ export default function SummaryPage() {
                 className="px-8 flex items-center gap-2"
                 onClick={() =>
                   router.push(
-                    `/courses/${courseId}/chapters/${chapterId}/summary/edit`,
+                    `/courses2/${courseId}/chapters/${chapterId}/summary/edit`,
                   )
                 }
               >
                 <PlusCircle size={18} />
                 <span>ایجاد اولین خلاصه</span>
               </Button>
-              <Link href="/courses" className="w-full md:w-auto">
+              <Link href="/courses2" className="w-full md:w-auto">
                 <Button variant="back" size="lg">
                   بازگشت به لیست درس‌ها
                 </Button>
@@ -95,7 +94,7 @@ export default function SummaryPage() {
 
         {/* Navigation Button */}
         <div className=" flex flex-row gap-3 justify-between mt-6">
-          <Link href="/courses" className="w-full md:w-auto">
+          <Link href="/courses2" className="w-full md:w-auto">
             <Button variant="back" size="lg">
               بازگشت به لیست درس‌ها
             </Button>
@@ -106,7 +105,7 @@ export default function SummaryPage() {
             className="flex items-center gap-2"
             onClick={() =>
               router.push(
-                `/courses/${courseId}/chapters/${chapterId}/summary/edit`,
+                `/courses2/${courseId}/chapters/${chapterId}/summary/edit`,
               )
             }
           >

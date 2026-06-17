@@ -364,7 +364,7 @@ export default function CoursesPage() {
                                     </div>
 
                                     <Link
-                                      href={`/courses/${course.id}/chapters/${ch.id}`}
+                                      href={`/courses2/${course.id}/chapters/${ch.id}`}
                                       className=" text-sm md:text-base font-medium text-slate-700 group-hover:text-[#0077C8]"
                                     >
                                       {ch.title}
@@ -381,7 +381,7 @@ export default function CoursesPage() {
                                   <div className="flex items-center gap-1 md:gap-2 justify-end shrink-0">
                                     {/* دکمه فلش‌کارت */}
                                     <Link
-                                      href={`/courses/${course.id}/chapters/${ch.id}?createFlashcard=true`}
+                                      href={`/courses2/${course.id}/chapters/${ch.id}?createFlashcard=true`}
                                       className="px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >
@@ -390,7 +390,7 @@ export default function CoursesPage() {
 
                                     {/* دکمه خلاصه */}
                                     <Link
-                                      href={`/courses/${course.id}/chapters/${ch.id}/summary`}
+                                      href={`/courses2/${course.id}/chapters/${ch.id}/summary`}
                                       className="px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >

@@ -25,7 +25,7 @@ export default function EditSummaryPage() {
 
   const handleSave = () => {
     saveSummary(courseId, chapterId, content);
-    router.push(`/courses/${courseId}/chapters/${chapterId}/summary`);
+    router.push(`/courses2/${courseId}/chapters/${chapterId}/summary`);
   };
 
   return (
@@ -54,7 +54,7 @@ export default function EditSummaryPage() {
         </Button>
 
         {/* دکمه بازگشت (سمت چپ در موبایل و دسکتاپ) */}
-        <Link href="/courses" className="w-[45%] md:w-48">
+        <Link href="/courses2" className="w-[45%] md:w-48">
           <Button variant="back" size="lg" className="w-full">
             بازگشت
           </Button>
