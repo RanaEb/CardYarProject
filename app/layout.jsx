@@ -4,6 +4,7 @@ import "./globals.css";
 import { useState } from "react";
 import Sidebar from "@/app/components/Sidebar";
 import { Menu } from "lucide-react";
+import RegisterSW from "@/app/components/RegisterSW";
 
 export default function RootLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,12 +19,12 @@ export default function RootLayout({ children }) {
           <Menu size={24} />
         </button>
 
-        {/* سایدبار */}
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-        {/* محتوای صفحات */}
+            <RegisterSW />
         {children}
       </body>
     </html>
   );
 }
+
+

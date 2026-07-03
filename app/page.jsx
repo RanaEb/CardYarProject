@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import Button from "@/app/components/ui/button";
 import { BookOpen, Brain, Layers, FileText, NotebookText } from "lucide-react";
+import EnableNotifications from "@/app/components/EnableNotifications";
 
 export default function Dashboard() {
   const [profile, setProfile] = useState(null);
@@ -136,12 +137,15 @@ export default function Dashboard() {
             {/* در حالت موبایل ستونی است، در دسکتاپ ردیفی معکوس */}
             <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-5">
               {/* دکمه - در موبایل زیر قرار می‌گیرد (order-2)، در دسکتاپ در جایگاه خود می‌ماند */}
-              <div className="w-full flex justify-end md:justify-end order-2 md:order-1">
+              <div className="w-full flex flex-row gap-4 justify-end md:justify-end order-2 md:order-1">
                 <Link href="/review">
-                  <Button variant="secondary" size="lg">
-                    شروع مرور
-                  </Button>
+                 
+                    <Button variant="secondary" size="lg">
+                      شروع مرور
+                    </Button>
+                 
                 </Link>
+                <EnableNotifications />
               </div>
 
               {/* متن - در موبایل بالا قرار می‌گیرد (order-1)، در دسکتاپ در جایگاه خود می‌ماند */}
