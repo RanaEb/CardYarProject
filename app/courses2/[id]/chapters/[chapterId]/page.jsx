@@ -343,7 +343,7 @@ export default function CourseDetailPage() {
 
         {/* پایین صفحه */}
         <div className="flex flex-row gap-4 items-center justify-between pt-4 border-t border-slate-200">
-          <Link href="/courses" className="w-full md:w-auto">
+          <Link href="/courses2" className="w-full md:w-auto">
             <Button variant="back" size="lg">
               بازگشت
             </Button>

@@ -15,8 +15,9 @@ export default function ResetPage() {
     localStorage.removeItem("flashcards");
     localStorage.removeItem("review_history");
     localStorage.removeItem("progress");
- localStorage.removeItem("summaries");
+    localStorage.removeItem("summaries");
     window.location.replace("/setup");
+    localStorage.removeItem("notificationsEnabled");
   };
 
   return (

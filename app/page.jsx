@@ -9,7 +9,14 @@ import {
 } from "@/app/lib/storage";
 import Link from "next/link";
 import Button from "@/app/components/ui/button";
-import { BookOpen, Brain, Layers, FileText, NotebookText } from "lucide-react";
+import {
+  BookOpen,
+  Brain,
+  Layers,
+  FileText,
+  NotebookText,
+  Bell,
+} from "lucide-react";
 import EnableNotifications from "@/app/components/EnableNotifications";
 
 export default function Dashboard() {
@@ -56,17 +63,22 @@ export default function Dashboard() {
       <main dir="rtl" className="flex-1 p-12 pt-20">
         <div className="max-w-6xl mx-auto text-right">
           {/* Header */}
-          <div className="mb-10 rounded-[24px] border border-[#BFD8F8] bg-[#FCFEFF] px-6 py-5">
-            <h1 className="text-3xl font-bold text-[#111827] tracking-tight">
-              سلام {profile.userName} 👋
-            </h1>
+          <div className="mb-10 flex items-center justify-between rounded-[24px] border border-[#BFD8F8] bg-[#FCFEFF] px-6 py-6">
+            <div className="text-right">
+              <h1 className="text-3xl font-bold tracking-tight text-[#111827]">
+                سلام {profile.userName} 👋
+              </h1>
 
-            <p className="mt-4 text-sm text-[#6B7280]">
-              {profile.degree === "karshenasi" ? "کارشناسی" : ""}{" "}
-              {profile.major}
-            </p>
+              <p className="mt-4 text-sm text-[#6B7280]">
+                {profile.degree === "karshenasi" ? "کارشناسی" : ""}{" "}
+                {profile.major}
+              </p>
+            </div>
+            
+               <EnableNotifications />
+            
+           
           </div>
-
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
             {/* Flashcards */}
@@ -139,13 +151,10 @@ export default function Dashboard() {
               {/* دکمه - در موبایل زیر قرار می‌گیرد (order-2)، در دسکتاپ در جایگاه خود می‌ماند */}
               <div className="w-full flex flex-row gap-4 justify-end md:justify-end order-2 md:order-1">
                 <Link href="/review">
-                 
-                    <Button variant="secondary" size="lg">
-                      شروع مرور
-                    </Button>
-                 
+                  <Button variant="secondary" size="lg">
+                    شروع مرور
+                  </Button>
                 </Link>
-                <EnableNotifications />
               </div>
 
               {/* متن - در موبایل بالا قرار می‌گیرد (order-1)، در دسکتاپ در جایگاه خود می‌ماند */}
