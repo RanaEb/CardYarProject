@@ -22,7 +22,7 @@ export default function ReviewPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [courseName, setCourseName] = useState("");
   const [chapterName, setChapterName] = useState("");
-
+  const [showFullTitle, setShowFullTitle] = useState(false);
   useEffect(() => {
     if (!courseId) return;
 
@@ -114,16 +114,27 @@ export default function ReviewPage() {
 
   return (
     <div className="max-w-2xl mx-auto pt-20 p-8 space-y-6">
-      <div className="flex items-center justify-between bg-white border border-[#BFD8F8] rounded-2xl p-4 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="bg-[#D9E8FF] text-[#0057A3] px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
-            <div className="w-2 h-2 bg-[#0057A3] rounded-full animate-pulse" />
-            {courseName}
-            {chapterName ? ` - ${chapterName}` : ""}
-          </div>
+      <div className="flex items-center gap-3 bg-white border border-[#BFD8F8] rounded-2xl p-4 shadow-sm">
+        <div className="flex-1 min-w-0">
+          <button
+            type="button"
+            onClick={() => setShowFullTitle(!showFullTitle)}
+            className="w-full text-right bg-[#D9E8FF] text-[#0057A3] px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2"
+          >
+            <div className="w-2 h-2 bg-[#0057A3] rounded-full animate-pulse shrink-0" />
+
+            <span
+              className={`${
+                showFullTitle ? "whitespace-normal break-words" : "truncate"
+              }`}
+            >
+              {courseName}
+              {chapterName ? ` - ${chapterName}` : ""}
+            </span>
+          </button>
         </div>
 
-        <div className="text-sm font-medium text-[#0057A3] bg-[#F5F9FF] px-3 py-1 rounded-lg border border-[#E0EDFF]">
+        <div className="shrink-0 text-sm font-medium text-[#0057A3] bg-[#F5F9FF] px-4 py-2 rounded-xl border border-[#E0EDFF]">
           {currentIndex + 1} از {cards.length}
         </div>
       </div>
