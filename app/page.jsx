@@ -43,11 +43,12 @@ export default function Dashboard() {
     const summaries = getSummaries() || [];
 
     const today = new Date().toISOString().split("T")[0];
-
     const dueCards = flashcards.filter(
-      (card) => card.nextReview && card.nextReview.split("T")[0] <= today,
+      (card) =>
+        !card.isDefault &&
+        card.nextReview &&
+        card.nextReview.split("T")[0] <= today,
     );
-
     setStats({
       courses: courses.length,
       flashcards: flashcards.length,
@@ -74,10 +75,8 @@ export default function Dashboard() {
                 {profile.major}
               </p>
             </div>
-            
-               <EnableNotifications />
-            
-           
+
+            <EnableNotifications />
           </div>
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">

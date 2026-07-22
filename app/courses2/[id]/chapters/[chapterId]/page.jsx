@@ -19,7 +19,6 @@ import {
   Image as ImageIcon,
   X,
 } from "lucide-react";
-
 export default function CourseDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -88,12 +87,21 @@ export default function CourseDetailPage() {
       id: Date.now().toString(),
       courseId,
       chapterId: chapterId || null,
+
       questionText: newQuestion.trim(),
       answerText: newAnswer.trim(),
+
       questionImage: qImg,
       answerImage: aImg,
+
+      repetition: 0,
       interval: 1,
+      easeFactor: 2.5,
+
       nextReview: new Date().toISOString(),
+      lastReviewed: null,
+
+      isDefault: false,
     };
 
     addFlashcard(card);
@@ -116,12 +124,16 @@ export default function CourseDetailPage() {
 
   if (!course) return null;
 
+  const today = new Date().toDateString();
+
   const dueToday = flashcards.filter(
-    (fc) => new Date(fc.nextReview) <= new Date(),
+    (fc) =>
+      !fc.isDefault &&
+      fc.createdAt &&
+      new Date(fc.createdAt).toDateString() === today,
   );
-
   const courseTitle = course?.title || "بدون عنوان";
-
+  const reviewCards = flashcards.filter((c) => !c.isDefault);
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-6">
       <div className="max-w-4xl mx-auto space-y-6">
@@ -284,9 +296,17 @@ export default function CourseDetailPage() {
                     <div className="flex-1 flex flex-col gap-4">
                       {/* سوال */}
                       <div>
-                        <span className="text-[11px] text-slate-500 font-medium">
-                          سؤال :
-                        </span>
+                        {card.isDefault && (
+                          <span className="inline-block text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-md mb-2">
+                            پیش‌فرض
+                          </span>
+                        )}
+
+                        <div>
+                          <span className="text-[11px] text-slate-500 font-medium">
+                            سؤال :
+                          </span>
+                        </div>
 
                         {card.questionImage && (
                           <img
@@ -349,7 +369,7 @@ export default function CourseDetailPage() {
             </Button>
           </Link>
 
-          {flashcards.length > 0 && (
+          {reviewCards.length > 0 && (
             <Link
               href={`/review/${courseId}${
                 chapterId ? `?chapter=${chapterId}` : ""

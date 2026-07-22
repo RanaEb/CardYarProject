@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import majors from "@/app/setup/data/majors.json";
-import { saveUserProfile, getUserProfile } from "@/app/lib/storage";
+import {
+  saveUserProfile,
+  getUserProfile,
+  saveFlashcards,
+} from "@/app/lib/storage";
 import Button from "@/app/components/ui/button";
 import { Card } from "@/app/components/ui/card";
 import Input from "@/app/components/ui/input";
@@ -39,15 +43,45 @@ export default function SetupPage() {
 
     const defaultCourses = majors?.[degree]?.[major]?.courses || [];
 
-    const coursesWithMeta = defaultCourses.map((course, index) => ({
-      id: course.id || String(index + 1),
-      title: course.title || course.name || `درس ${index + 1}`,
-      chapters: course.chapters || [],
-      isDefault: true,
-      createdAt: new Date().toISOString(),
-    }));
+    const flashcards = [];
+
+    const coursesWithMeta = defaultCourses.map((course, index) => {
+      const chapters = (course.chapters || []).map((chapter) => {
+        // استخراج فلش کارت‌های پیش فرض
+        (chapter.flashcards || []).forEach((card) => {
+          flashcards.push({
+            id: crypto.randomUUID(),
+            courseId: String(course.id),
+            chapterId: String(chapter.id),
+            questionText: card.question,
+            answerText: card.answer,
+            questionImage: null,
+            answerImage: null,
+            interval: 1,
+            nextReview: new Date().toISOString(),
+            createdAt: new Date().toISOString(),
+            isDefault: true,
+          });
+        });
+
+        return {
+          id: chapter.id,
+          title: chapter.title,
+          isDefault: true,
+        };
+      });
+
+      return {
+        id: course.id || String(index + 1),
+        title: course.title || course.name || `درس ${index + 1}`,
+        chapters,
+        isDefault: true,
+        createdAt: new Date().toISOString(),
+      };
+    });
 
     localStorage.setItem("courses", JSON.stringify(coursesWithMeta));
+    saveFlashcards(flashcards);
     window.location.replace("/");
   };
 

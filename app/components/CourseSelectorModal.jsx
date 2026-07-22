@@ -118,10 +118,10 @@ export default function CourseSelectorModal({
                     // شمارش واقعی کارت‌ها برای هر فصل
                     const cardCount = flashcards.filter(
                       (fc) =>
-                        fc.courseId === selectedCourse.id &&
-                        fc.chapterId === ch.id,
+                        String(fc.courseId) === String(selectedCourse.id) &&
+                        String(fc.chapterId) === String(ch.id) &&
+                        fc.isDefault !== true,
                     ).length;
-
                     return (
                       <button
                         key={ch.id}
