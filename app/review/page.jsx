@@ -27,9 +27,11 @@ export default function ReviewHome() {
     const today = new Date().toISOString().split("T")[0];
 
     const due = cards.filter(
-      (card) => !card.nextReview || card.nextReview.split("T")[0] <= today,
+      (card) =>
+        !card.isDefault &&
+        card.nextReview &&
+        card.nextReview.split("T")[0] <= today,
     );
-
     setDueCards(due);
 
     const coursesDue = courses

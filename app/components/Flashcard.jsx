@@ -73,25 +73,45 @@ export default function Flashcard({ card, onAnswer }) {
 
       {/* دکمه‌های پاسخ */}
       {showAnswer && (
-        <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-[#D9E8FF]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-8 pt-6 border-t border-[#D9E8FF]">
           <Button
             onClick={() => {
               setShowAnswer(false);
-              onAnswer(false);
+              onAnswer("again");
             }}
             className="bg-[#FDECEC] text-[#C93D3B] hover:bg-[#FAD4D4] border border-[#F5B5B5] rounded-xl h-11 font-medium"
           >
-            یادم نبود
+            😵 یادم نبود
           </Button>
 
           <Button
             onClick={() => {
               setShowAnswer(false);
-              onAnswer(true);
+              onAnswer("hard");
             }}
-            className="bg-[#34A38A] hover:bg-[#2C8C76] text-white rounded-xl h-11 font-medium"
+            className="bg-[#FFF4E5] text-[#C47A00] hover:bg-[#FFE9C2] border border-[#FFD58A] rounded-xl h-11 font-medium"
           >
-            بلد بودم
+            😕 سخت بود
+          </Button>
+
+          <Button
+            onClick={() => {
+              setShowAnswer(false);
+              onAnswer("good");
+            }}
+            className="bg-[#E8F6EE] text-[#1D7A46] hover:bg-[#D7F1E3] border border-[#B9E5CB] rounded-xl h-11 font-medium"
+          >
+            🙂 خوب بود
+          </Button>
+
+          <Button
+            onClick={() => {
+              setShowAnswer(false);
+              onAnswer("easy");
+            }}
+            className="bg-[#DDF4FF] text-[#006FA6] hover:bg-[#CBEFFF] border border-[#A8E0F7] rounded-xl h-11 font-medium"
+          >
+            😎 خیلی آسون
           </Button>
         </div>
       )}

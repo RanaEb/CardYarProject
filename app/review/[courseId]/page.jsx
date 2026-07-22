@@ -26,7 +26,8 @@ export default function ReviewPage() {
   useEffect(() => {
     if (!courseId) return;
 
-    const all = getFlashcardsByCourse(courseId);
+    const all = getFlashcardsByCourse(courseId)
+  .filter((card) => !card.isDefault);
     const today = new Date().toISOString().split("T")[0];
 
     const due = all.filter(

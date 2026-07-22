@@ -56,18 +56,61 @@ export const getFlashcardsByCourse = (courseId, chapterId = null) => {
 };
 
 // الگوریتم مرور
-export const updateCardReview = (card, isSuccess) => {
+export const updateCardReview = (card, quality) => {
   const now = new Date();
-  let interval = card.interval || 1;
 
-  interval = isSuccess ? interval * 2 : 1;
+  // اگر quality به صورت متن ارسال شده باشد
+  const qualityMap = {
+    again: 0,
+    hard: 3,
+    good: 4,
+    easy: 5,
+  };
 
-  const nextReview = new Date();
+  if (typeof quality === "string") {
+    quality = qualityMap[quality] ?? 4;
+  }
+
+  let repetition = card.repetition ?? 0;
+  let interval = card.interval ?? 1;
+  let easeFactor = card.easeFactor ?? 2.5;
+
+  if (quality < 3) {
+    // پاسخ اشتباه
+    repetition = 0;
+    interval = 1;
+
+    // کاهش EF
+    easeFactor = Math.max(
+      1.3,
+      easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
+    );
+  } else {
+    // پاسخ صحیح
+    if (repetition === 0) {
+      interval = 1;
+    } else if (repetition === 1) {
+      interval = 6;
+    } else {
+      interval = Math.round(interval * easeFactor);
+    }
+
+    repetition++;
+
+    easeFactor = Math.max(
+      1.3,
+      easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
+    );
+  }
+
+  const nextReview = new Date(now);
   nextReview.setDate(now.getDate() + interval);
 
   return {
     ...card,
+    repetition,
     interval,
+    easeFactor,
     nextReview: nextReview.toISOString(),
     lastReviewed: now.toISOString(),
   };
@@ -203,7 +246,7 @@ export function saveSummaries(list) {
 export function saveSummary(courseId, chapterId, content) {
   const all = getSummaries();
   const existing = all.find(
-    (s) => s.courseId === courseId && s.chapterId === chapterId
+    (s) => s.courseId === courseId && s.chapterId === chapterId,
   );
   if (existing) {
     existing.content = content;
@@ -224,7 +267,7 @@ export function saveSummary(courseId, chapterId, content) {
 export function deleteSummary(courseId, chapterId) {
   const all = getSummaries();
   const filtered = all.filter(
-    (s) => !(s.courseId === courseId && s.chapterId === chapterId)
+    (s) => !(s.courseId === courseId && s.chapterId === chapterId),
   );
   saveSummaries(filtered);
 }
