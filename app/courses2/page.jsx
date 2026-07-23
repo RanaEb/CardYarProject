@@ -242,7 +242,7 @@ export default function CoursesPage() {
                     className={
                       course.isDefault
                         ? "text-gray-400 cursor-not-allowed"
-                        : "text-red-600 cursor-pointer hover:text-red-800"
+                        : " text-slate-500 hover:text-red-700 cursor-pointer"
                     }
                     onClick={(e) => {
                       e.stopPropagation();
