@@ -16,13 +16,11 @@ export default function Flashcard({ card, onAnswer }) {
   return (
     <Card className="max-w-md mx-auto mt-10 p-8 bg-white border border-[#BFD8F8] rounded-2xl shadow-sm">
       <div className="min-h-[220px] flex flex-col items-center justify-center text-center">
-        {/* سوال */}
         <div className="mb-6 w-full">
           <span className="text-xs text-[#0057A3] bg-[#EAF3FF] px-3 py-1 rounded-full font-medium">
             سؤال
           </span>
 
-          {/* عکس سوال */}
           {card.questionImage && (
             <img
               src={card.questionImage}
@@ -30,7 +28,6 @@ export default function Flashcard({ card, onAnswer }) {
             />
           )}
 
-          {/* متن سوال */}
           {card.questionText && (
             <h2 className="text-2xl font-semibold mt-2 text-slate-800 leading-relaxed">
               {card.questionText}
@@ -38,14 +35,12 @@ export default function Flashcard({ card, onAnswer }) {
           )}
         </div>
 
-        {/* پاسخ */}
         {showAnswer ? (
           <div className="mt-6 pt-6 border-t border-[#D9E8FF] w-full animate-in fade-in duration-500">
             <span className="text-xs text-[#0057A3] bg-[#EAF3FF] px-3 py-1 rounded-full font-medium">
               پاسخ
             </span>
 
-            {/* عکس پاسخ */}
             {card.answerImage && (
               <img
                 src={card.answerImage}
@@ -53,7 +48,6 @@ export default function Flashcard({ card, onAnswer }) {
               />
             )}
 
-            {/* متن پاسخ */}
             {card.answerText && (
               <p className="text-lg mt-2 text-slate-700 leading-relaxed">
                 {card.answerText}
@@ -71,7 +65,6 @@ export default function Flashcard({ card, onAnswer }) {
         )}
       </div>
 
-      {/* دکمه‌های پاسخ */}
       {showAnswer && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-8 pt-6 border-t border-[#D9E8FF]">
           <Button

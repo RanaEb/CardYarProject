@@ -31,7 +31,6 @@ export default function CourseSelectorModal({
         </h2>
 
         <div className="space-y-5 mb-6">
-          {/* ------------------ انتخاب درس ------------------ */}
           <div className="relative">
             <button
               type="button"
@@ -86,7 +85,6 @@ export default function CourseSelectorModal({
             )}
           </div>
 
-          {/* ------------------ انتخاب فصل ------------------ */}
           <div className="relative">
             <button
               type="button"
@@ -144,7 +142,6 @@ export default function CourseSelectorModal({
           </div>
         </div>
 
-        {/* دکمه بستن */}
         <button
           className="w-full h-12 rounded-2xl text-[#0057A3] border border-[#BFD8F8] hover:bg-[#EAF3FF] transition"
           onClick={onClose}

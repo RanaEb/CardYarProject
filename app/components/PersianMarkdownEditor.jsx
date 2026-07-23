@@ -174,7 +174,7 @@ export default function PersianMarkdownEditor({
           pointer-events: none;
           display: block;
         }
-        /* سایر استایل‌ها */
+        
         .editor-content h1 {
           font-size: 1.8rem;
           font-weight: bold;

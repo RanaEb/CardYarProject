@@ -53,7 +53,7 @@ export default function SummaryReviewSelectorModal({ onClose = () => {} }) {
         </h2>
 
         <div className="mb-6 space-y-5">
-          {/* انتخاب درس */}
+        
           <div className="relative">
             <button
               type="button"
@@ -102,7 +102,7 @@ export default function SummaryReviewSelectorModal({ onClose = () => {} }) {
                           </span>
                         </div>
 
-                        {/* باکس تعداد خلاصه‌ها */}
+                  
                         <span className="rounded-xl bg-[#E6FBF8] px-3 py-1 text-xs font-medium text-[#22B8A6]">
                           {course.summaryCount} خلاصه
                         </span>
@@ -114,7 +114,7 @@ export default function SummaryReviewSelectorModal({ onClose = () => {} }) {
             )}
           </div>
 
-          {/* انتخاب فصل */}
+          
           <div className="relative">
             <button
               type="button"
@@ -174,7 +174,7 @@ export default function SummaryReviewSelectorModal({ onClose = () => {} }) {
                             </span>
                           </div>
 
-                          {/* باکس تعداد خلاصه‌های فصل */}
+                  
                           <span className="rounded-xl bg-[#E6FBF8] px-3 py-1 text-xs font-medium text-[#22B8A6]">
                             {summaryCount} خلاصه
                           </span>

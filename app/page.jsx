@@ -145,9 +145,7 @@ export default function Dashboard() {
 
           {/* CTA Section */}
           <div className="rounded-3xl border border-white/60 bg-gradient-to-br from-[#EAF6FF] to-[#E8FCFF] p-6 md:p-8 shadow-sm">
-            {/* در حالت موبایل ستونی است، در دسکتاپ ردیفی معکوس */}
             <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-5">
-              {/* دکمه - در موبایل زیر قرار می‌گیرد (order-2)، در دسکتاپ در جایگاه خود می‌ماند */}
               <div className="w-full flex flex-row gap-4 justify-end md:justify-end order-2 md:order-1">
                 <Link href="/review">
                   <Button variant="secondary" size="lg">
@@ -155,8 +153,6 @@ export default function Dashboard() {
                   </Button>
                 </Link>
               </div>
-
-              {/* متن - در موبایل بالا قرار می‌گیرد (order-1)، در دسکتاپ در جایگاه خود می‌ماند */}
               <div className="w-full text-right order-1 md:order-2">
                 <h2 className="text-xl font-semibold text-[#111827]">
                   امروز آماده‌ای برای پیشرفت؟

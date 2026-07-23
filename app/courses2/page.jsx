@@ -356,7 +356,7 @@ export default function CoursesPage() {
 
                                   {/* RIGHT PART */}
                                   <div className="flex flex-row items-center w-full md:w-auto flex-wrap justify-end gap-2 shrink-0">
-                                    {/* دکمه فلش‌کارت */}
+                       
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}?createFlashcard=true`}
                                       className="px-4 py-2 md:py-2.5 text-[12px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
@@ -365,7 +365,7 @@ export default function CoursesPage() {
                                       فلش‌کارت
                                     </Link>
 
-                                    {/* دکمه خلاصه */}
+                                
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}/summary`}
                                       className="px-4 py-2 md:py-2.5 text-[12px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"

@@ -63,7 +63,7 @@ export default function SummaryPage() {
   return (
     <div className="min-h-screen bg-slate-50 p-6" dir="rtl">
       <div className="max-w-2xl mx-auto">
-        {/* Header مشابه صفحه AddCard */}
+ 
         <div className="flex items-center justify-between mb-6 mt-12">
           <div className="flex items-center gap-3">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF4FF] text-[#0077C8]">

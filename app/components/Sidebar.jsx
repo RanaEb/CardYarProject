@@ -61,12 +61,12 @@ export default function Sidebar({ open, onClose }) {
 
   return (
     <>
-      {/* بک‌دراپ */}
+    
       {open && (
         <div className="fixed inset-0 bg-black/30 z-40" onClick={onClose} />
       )}
 
-      {/* سایدبار */}
+    
       <aside
         dir="rtl"
         className={`
@@ -78,7 +78,7 @@ export default function Sidebar({ open, onClose }) {
           ${open ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        {/* Close button */}
+     
         <button
           type="button"
           onClick={onClose}

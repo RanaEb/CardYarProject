@@ -43,7 +43,7 @@ export default function EditSummaryPage() {
       <PersianMarkdownEditor value={content} onChange={setContent} />
 
       <div className="flex flex-row justify-between items-center gap-3 mt-4">
-        {/* دکمه ذخیره (سمت راست در موبایل و دسکتاپ) */}
+
         <Button
           onClick={handleSave}
           variant="primary"
@@ -53,7 +53,7 @@ export default function EditSummaryPage() {
           ذخیره
         </Button>
 
-        {/* دکمه بازگشت (سمت چپ در موبایل و دسکتاپ) */}
+
         <Link href="/courses2" className="w-[45%] md:w-48">
           <Button variant="back" size="lg" className="w-full">
             بازگشت

@@ -100,7 +100,7 @@ export default function SetupPage() {
           </h1>
         </div>
 
-        {/* نام */}
+    
         <div className="mb-6">
           <label className="block text-slate-800 mb-2 font-medium">نام</label>
           <Input
@@ -111,7 +111,7 @@ export default function SetupPage() {
           />
         </div>
 
-        {/* مقطع */}
+    
         <div className="mb-6">
           <label className="block text-slate-700 mb-2 font-medium">
             مقطع تحصیلی
@@ -127,7 +127,7 @@ export default function SetupPage() {
           />
         </div>
 
-        {/* رشته */}
+  
         <div className="mb-6">
           <label className="block text-slate-700 mb-2 font-medium">
             رشته تحصیلی

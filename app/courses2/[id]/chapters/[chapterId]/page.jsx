@@ -78,6 +78,8 @@ export default function CourseDetailPage() {
     const qImg = questionImage ? await toBase64(questionImage) : null;
     const aImg = answerImage ? await toBase64(answerImage) : null;
 
+    const now = new Date().toISOString();
+
     const card = {
       id: Date.now().toString(),
       courseId,
@@ -93,7 +95,8 @@ export default function CourseDetailPage() {
       interval: 1,
       easeFactor: 2.5,
 
-      nextReview: new Date().toISOString(),
+      createdAt: now,
+      nextReview: now,
       lastReviewed: null,
 
       isDefault: false,
@@ -107,7 +110,6 @@ export default function CourseDetailPage() {
     setQuestionImage(null);
     setAnswerImage(null);
   };
-
 
   const handleDeleteFlashcard = (cardId) => {
     if (!confirm("آیا این فلش‌کارت حذف شود؟")) return;
@@ -132,7 +134,7 @@ export default function CourseDetailPage() {
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-6">
       <div className="max-w-4xl mx-auto space-y-6">
-        {/* هدر */}
+        {/* Header */}
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row items-start md:items-center font-medium md:justify-between gap-3 text-2xl mt-12">
             <div className="flex items-center gap-2 text-[#34A38A]">
@@ -152,7 +154,6 @@ export default function CourseDetailPage() {
             </div>
           </div>
 
-          {/* عنوان + فصل (ریسپانسیو اصلاح‌شده برای موبایل؛ دسکتاپ حفظ شده) */}
           <div className="flex flex-col md:flex-row items-start md:items-center gap-2 rounded-2xl bg-white px-3 py-4 border border-slate-300 text-sm text-slate-500 mb-2">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#34A38A]" />
@@ -170,9 +171,9 @@ export default function CourseDetailPage() {
           </div>
         </div>
 
-        {/* دو ستون */}
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* فرم افزودن کارت */}
+          {/*   Add card form */}
           <Card className="p-5 border-slate-200 shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F3F8FC] text-[#0077C8]">
@@ -183,7 +184,7 @@ export default function CourseDetailPage() {
               </span>
             </div>
 
-            {/* ==== سؤال ==== */}
+        
             <div className="relative mt-3">
               <label className="text-sm text-slate-700 mb-2 block">سؤال</label>
 
@@ -194,7 +195,7 @@ export default function CourseDetailPage() {
                 onChange={(e) => setNewQuestion(e.target.value)}
               />
 
-              {/* آیکون عکس */}
+              
               <ImageIcon
                 className="absolute left-3 top-[42px] text-slate-400 cursor-pointer hover:text-blue-500"
                 size={22}
@@ -225,7 +226,6 @@ export default function CourseDetailPage() {
               )}
             </div>
 
-            {/* ==== پاسخ ==== */}
             <div className="relative mt-4">
               <label className="text-sm text-slate-700 mb-2 block">پاسخ</label>
 
@@ -275,7 +275,6 @@ export default function CourseDetailPage() {
             </Button>
           </Card>
 
-          {/* ===== لیست کارت‌ها ===== */}
           <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
             <span className="text-base font-semibold text-[#0077C8]">
               فلش‌کارت‌ها
@@ -289,7 +288,7 @@ export default function CourseDetailPage() {
                     className="p-4 flex gap-3 border-slate-200 bg-white hover:border-blue-400 transition"
                   >
                     <div className="flex-1 flex flex-col gap-4">
-                      {/* سوال */}
+              
                       <div>
                         {card.isDefault && (
                           <span className="inline-block text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-md mb-2">
@@ -317,7 +316,7 @@ export default function CourseDetailPage() {
                         )}
                       </div>
 
-                      {/* پاسخ */}
+                  
                       <div>
                         <span className="text-[11px] text-slate-500 font-medium">
                           پاسخ :
@@ -356,7 +355,7 @@ export default function CourseDetailPage() {
           </div>
         </div>
 
-        {/* پایین صفحه */}
+
         <div className="flex flex-row gap-4 items-center justify-between pt-4 border-t border-slate-200">
           <Link href="/courses2" className="w-full md:w-auto">
             <Button variant="back" size="lg">

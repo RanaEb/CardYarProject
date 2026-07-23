@@ -53,6 +53,8 @@ export default function AddCardPage() {
     const qImg = questionImage ? await toBase64(questionImage) : null;
     const aImg = answerImage ? await toBase64(answerImage) : null;
 
+    const now = new Date().toISOString();
+
     const newCard = {
       id: Date.now().toString(),
       courseId,
@@ -61,8 +63,14 @@ export default function AddCardPage() {
       answerText: answer,
       questionImage: qImg,
       answerImage: aImg,
+      nextReview: now,
+      repetition: 0,
       interval: 1,
-      nextReview: new Date().toISOString(),
+      easeFactor: 2.5,
+      createdAt: now,
+      nextReview: now,
+      lastReviewed: null,
+      isDefault: false,
     };
 
     addFlashcard(newCard);
@@ -116,7 +124,6 @@ export default function AddCardPage() {
             }))}
           />
 
-          {/* فیلد سوال */}
           <div className="relative">
             <Input
               placeholder="متن سوال..."
@@ -156,8 +163,6 @@ export default function AddCardPage() {
               </button>
             </div>
           )}
-
-          {/* فیلد جواب */}
           <div className="relative">
             <Input
               placeholder="متن پاسخ..."

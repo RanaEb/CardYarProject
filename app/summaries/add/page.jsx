@@ -64,7 +64,7 @@ export default function AddSummaryPage() {
 
         <Card className="p-6 space-y-5 rounded-xl border border-slate-300">
 
-          {/* انتخاب درس */}
+   
           <UniversalSelect
             placeholder="انتخاب درس..."
             value={courseId}
@@ -85,7 +85,7 @@ export default function AddSummaryPage() {
             }))}
           />
 
-          {/* انتخاب فصل */}
+   
           <div
             onClick={() => {
               if (!courseId) alert("ابتدا درس را انتخاب کنید");
@@ -109,7 +109,7 @@ export default function AddSummaryPage() {
             />
           </div>
 
-          {/* ادیتور خلاصه */}
+        
           <div className="space-y-2">
             <div className="text-sm font-medium text-slate-600">
               متن خلاصه
