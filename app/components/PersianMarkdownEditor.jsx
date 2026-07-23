@@ -29,11 +29,13 @@ export default function PersianMarkdownEditor({
   const [active, setActive] = useState({});
 
   useEffect(() => {
-    if (editorRef.current) {
-      const htmlContent = value ? marked.parse(value) : "";
-      if (editorRef.current.innerHTML !== htmlContent) {
-        editorRef.current.innerHTML = htmlContent;
-      }
+    if (!editorRef.current) return;
+    if (document.activeElement === editorRef.current) return;
+
+    const htmlContent = value ? marked.parse(value) : "";
+
+    if (editorRef.current.innerHTML !== htmlContent) {
+      editorRef.current.innerHTML = htmlContent;
     }
   }, [value]);
 
