@@ -347,9 +347,9 @@ export default function CoursesPage() {
                           {course.chapters.map((ch) => (
                             <SortableChapter key={ch.id} chapter={ch}>
                               {({ attributes, listeners }) => (
-                                <div className="group flex items-center justify-between p-3 bg-white border border-slate-300 rounded-2xl shadow-sm hover:shadow-lg hover:border-[#0077C8] transition-all">
+                                <div className="group flex flex-col gap-3 md:flex-row md:items-center md:justify-between p-3 bg-white border border-slate-300 rounded-2xl shadow-sm hover:shadow-lg hover:border-[#0077C8] transition-all">
                                   {/* LEFT PART */}
-                                  <div className="flex items-center gap-3">
+                                  <div className="flex items-center gap-2 min-w-0 w-full md:w-auto">
                                     {/* DRAG HANDLE */}
                                     <button
                                       className="text-slate-400 hover:text-[#0077C8] cursor-grab active:cursor-grabbing touch-none"
@@ -359,30 +359,30 @@ export default function CoursesPage() {
                                       <GripVertical size={18} />
                                     </button>
 
-                                    <div className="h-9 w-9 rounded-xl bg-[#EAF4FF] flex items-center justify-center text-[#0077C8]">
+                                    <div className="h-8 w-8 rounded-xl bg-[#EAF4FF] flex items-center justify-center text-[#0077C8]">
                                       <BookOpen size={18} />
                                     </div>
 
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}`}
-                                      className=" text-sm md:text-base font-medium text-slate-700 group-hover:text-[#0077C8]"
+                                      className="flex-1 min-w-0 truncate text-sm md:text-base font-medium text-slate-700 group-hover:text-[#0077C8]"
                                     >
                                       {ch.title}
                                     </Link>
 
                                     {ch.isDefault && (
-                                      <span className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-md">
+                                      <span className="text-xs text-center bg-gray-200 text-gray-600 px-2 py-1.5 rounded-md">
                                         پیش‌فرض
                                       </span>
                                     )}
                                   </div>
 
                                   {/* RIGHT PART */}
-                                  <div className="flex items-center gap-1 md:gap-2 justify-end shrink-0">
+                                  <div className="flex flex-row items-center w-full md:w-auto flex-wrap justify-end gap-2 shrink-0">
                                     {/* دکمه فلش‌کارت */}
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}?createFlashcard=true`}
-                                      className="px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
+                                      className="px-4 py-2 md:py-2.5 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       فلش‌کارت
@@ -391,26 +391,23 @@ export default function CoursesPage() {
                                     {/* دکمه خلاصه */}
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}/summary`}
-                                      className="px-2 py-1.5 md:px-3 md:py-2 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
+                                      className="px-4 py-2 md:py-2.5 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       خلاصه
                                     </Link>
 
-                                    {/* دکمه حذف */}
-                                    {!ch.isDefault && (
-                                      <Trash2
-                                        size={20}
-                                        className="text-slate-500 hover:text-red-700 cursor-pointer ml-1"
-                                        onClick={(e) => {
-                                          e.stopPropagation();
-                                          handleDeleteChapterClick(
-                                            course.id,
-                                            ch.id,
-                                          );
-                                        }}
-                                      />
-                                    )}
+                                    <Trash2
+                                      size={20}
+                                      className="text-slate-500 hover:text-red-700 cursor-pointer ml-1"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleDeleteChapterClick(
+                                          course.id,
+                                          ch.id,
+                                        );
+                                      }}
+                                    />
                                   </div>
                                 </div>
                               )}

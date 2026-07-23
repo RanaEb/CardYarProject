@@ -64,7 +64,7 @@ export default function CourseSelectorModal({
                       className="w-full flex items-center justify-between rounded-xl px-4 py-3 text-right hover:bg-[#F5F9FF] transition group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-xl bg-[#EAF3FF] text-[#0057A3] flex items-center justify-center">
+                        <div className="h-8 w-8 rounded-xl bg-[#EAF3FF] text-[#0057A3] flex items-center justify-center">
                           <BookOpen size={18} />
                         </div>
 
