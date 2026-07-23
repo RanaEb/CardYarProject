@@ -359,7 +359,7 @@ export default function CoursesPage() {
                                     {/* دکمه فلش‌کارت */}
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}?createFlashcard=true`}
-                                      className="px-4 py-2 md:py-2.5 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
+                                      className="px-4 py-2 md:py-2.5 text-[12px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       فلش‌کارت
@@ -368,7 +368,7 @@ export default function CoursesPage() {
                                     {/* دکمه خلاصه */}
                                     <Link
                                       href={`/courses2/${course.id}/chapters/${ch.id}/summary`}
-                                      className="px-4 py-2 md:py-2.5 text-[10px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
+                                      className="px-4 py-2 md:py-2.5 text-[12px] md:text-xs font-medium rounded-lg md:rounded-xl bg-[#EAF4FF] text-[#0077C8] hover:bg-[#CFE8FF] whitespace-nowrap shrink-0"
                                       onClick={(e) => e.stopPropagation()}
                                     >
                                       خلاصه
