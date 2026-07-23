@@ -26,8 +26,6 @@ export default function CourseDetailPage() {
 
   const courseId = params.courseId || params.id;
   const chapterId = params.chapterId || searchParams.get("chapter") || null;
-
-  // ====== State ها ======
   const [course, setCourse] = useState(null);
   const [chapter, setChapter] = useState(null);
   const [flashcards, setFlashcards] = useState([]);
@@ -41,7 +39,6 @@ export default function CourseDetailPage() {
   const questionImageInputRef = useRef(null);
   const answerImageInputRef = useRef(null);
 
-  // تبدیل عکس به Base64
   const toBase64 = (file) =>
     new Promise((resolve, reject) => {
       if (!file) return resolve(null);
@@ -51,7 +48,6 @@ export default function CourseDetailPage() {
       reader.readAsDataURL(file);
     });
 
-  // ====== دریافت داده‌ها ======
   useEffect(() => {
     const courses = getCourses();
     const found = courses.find((c) => String(c.id) === String(courseId));
@@ -73,7 +69,6 @@ export default function CourseDetailPage() {
     setFlashcards(cards);
   }, [courseId, chapterId, router]);
 
-  // ====== افزودن فلش کارت ======
   const handleAddFlashcard = async () => {
     if (!newQuestion.trim() && !questionImage) {
       alert("سؤال یا عکس باید وارد شود");
@@ -113,7 +108,7 @@ export default function CourseDetailPage() {
     setAnswerImage(null);
   };
 
-  // ====== حذف ======
+
   const handleDeleteFlashcard = (cardId) => {
     if (!confirm("آیا این فلش‌کارت حذف شود؟")) return;
 

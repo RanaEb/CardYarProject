@@ -4,8 +4,6 @@ self.addEventListener("push", function (event) {
   const title = data.title || "CardYar";
   const options = {
     body: data.body || "نوتیفیکیشن جدید",
-    // icon: "/icon-192.png",
-    // badge: "/badge-72.png",
     data: data.url || "/",
   };
 

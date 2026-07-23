@@ -129,11 +129,10 @@ export default function Sidebar({ open, onClose }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  // اینجا کلیک رو هندل می‌کنیم
                   onClick={() => handleLinkClick(item.href)}
                   className={`
                     group relative flex flex-row items-center justify-between overflow-hidden rounded-2xl px-4 py-3 text-sm font-medium text-[#374151] transition-all duration-200 hover:bg-white/90 hover:shadow-sm
-                    ${activeItem === item.href ? "bg-white/90 shadow-sm" : ""} // کلاس برای آیتم انتخاب شده
+                    ${activeItem === item.href ? "bg-white/90 shadow-sm" : ""} 
                   `}
                 >
                   <span
@@ -151,7 +150,7 @@ export default function Sidebar({ open, onClose }) {
                         ${
                           activeItem === item.href
                             ? `bg-[#EAF4FF] text-[${item.color}]`
-                            : `bg-[#F3F8FC] text-[#0077C8] group-hover:bg-[#EAF4FF]` // رنگ آیکون و پس‌زمینه در حالت عادی و هاور
+                            : `bg-[#F3F8FC] text-[#0077C8] group-hover:bg-[#EAF4FF]` 
                         }
                       `}
                     >

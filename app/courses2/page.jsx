@@ -23,7 +23,6 @@ import {
   GripVertical,
 } from "lucide-react";
 
-// DnD KIT
 import {
   DndContext,
   closestCenter,
@@ -40,10 +39,6 @@ import {
 } from "@dnd-kit/sortable";
 
 import { CSS } from "@dnd-kit/utilities";
-
-// ----------------------
-//          Drag Handle Version
-// ----------------------
 function SortableChapter({ chapter, children }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: chapter.id });
@@ -101,12 +96,10 @@ export default function CoursesPage() {
       setCourses(defaultCourses);
     } else {
       const updated = savedCourses.map((course) => {
-        // ✅ اگر کاربر خودش فصل‌ها را ویرایش کرده باشد، به هیچ وجه بازسازی نکن
         if (course.isChaptersModified) {
           return course;
         }
 
-        // اگر درس پیش‌فرض بوده و فصل ندارد، فقط در اولین بار آن‌ها را بازسازی کن
         if (
           course.isDefault &&
           (!course.chapters || course.chapters.length === 0)
@@ -131,9 +124,6 @@ export default function CoursesPage() {
     }
   }, []);
 
-  // -------------------------
-  //         ADD COURSE
-  // -------------------------
   const handleAddCourse = () => {
     if (!newCourse.trim()) return;
 
@@ -151,9 +141,6 @@ export default function CoursesPage() {
     setNewCourse("");
   };
 
-  // -------------------------
-  //       DELETE COURSE
-  // -------------------------
   const handleDeleteCourse = (id, isDefault) => {
     if (isDefault) {
       alert("❌ درس‌های پیش‌فرض قابل حذف نیستند.");
@@ -165,10 +152,6 @@ export default function CoursesPage() {
     deleteCourse(id);
     setCourses(getCourses());
   };
-
-  // -------------------------
-  //        ADD CHAPTER
-  // -------------------------
   const handleAddChapter = (courseId) => {
     const title = chapterInputs[courseId]?.trim();
     if (!title) return;
@@ -199,9 +182,6 @@ export default function CoursesPage() {
     setChapterInputs((prev) => ({ ...prev, [courseId]: "" }));
   };
 
-  // -------------------------
-  //      DELETE CHAPTER
-  // -------------------------
   const handleDeleteChapterClick = (courseId, chapterId) => {
     if (!confirm("این فصل و تمام فلش‌کارت‌های آن حذف شوند؟")) return;
 
@@ -209,9 +189,6 @@ export default function CoursesPage() {
     setCourses(getCourses());
   };
 
-  // -------------------------
-  //         UI RENDER
-  // -------------------------
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       <div className="max-w-3xl mx-auto">

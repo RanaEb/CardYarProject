@@ -13,7 +13,6 @@ turndownService.addRule("strikethrough", {
   replacement: (content) => `~~${content}~~`,
 });
 
-// div → خط جدید
 turndownService.addRule("div", {
   filter: "div",
   replacement: (content) => `\n${content}\n`,

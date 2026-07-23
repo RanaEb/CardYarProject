@@ -13,8 +13,6 @@ export default function CourseSelectorModal({
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const router = useRouter();
-
-  // خواندن کارت‌ها از localStorage
   const flashcards =
     typeof window !== "undefined"
       ? JSON.parse(localStorage.getItem("flashcards") || "[]")
@@ -115,7 +113,6 @@ export default function CourseSelectorModal({
               <div className="absolute top-full right-0 left-0 mt-2 bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden z-20">
                 <div className="max-h-60 overflow-y-auto p-2">
                   {selectedCourse.chapters?.map((ch) => {
-                    // شمارش واقعی کارت‌ها برای هر فصل
                     const cardCount = flashcards.filter(
                       (fc) =>
                         String(fc.courseId) === String(selectedCourse.id) &&

@@ -47,7 +47,6 @@ export default function SetupPage() {
 
     const coursesWithMeta = defaultCourses.map((course, index) => {
       const chapters = (course.chapters || []).map((chapter) => {
-        // استخراج فلش کارت‌های پیش فرض
         (chapter.flashcards || []).forEach((card) => {
           flashcards.push({
             id: crypto.randomUUID(),
