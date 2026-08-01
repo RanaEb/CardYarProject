@@ -77,17 +77,14 @@ export const updateCardReview = (card, quality) => {
   let easeFactor = card.easeFactor ?? 2.5;
 
   if (quality < 3) {
-  
     repetition = 0;
     interval = 1;
 
-    
     easeFactor = Math.max(
       1.3,
       easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
     );
   } else {
-
     if (repetition === 0) {
       interval = 1;
     } else if (repetition === 1) {
@@ -116,7 +113,7 @@ export const updateCardReview = (card, quality) => {
     lastReviewed: now.toISOString(),
   };
 };
-//Profile 
+//Profile
 // Save the user profile
 export function saveUserProfile(profile) {
   if (typeof window === "undefined") return;
@@ -253,16 +250,29 @@ export function saveSummary(courseId, chapterId, content) {
   saveSummaries(all);
 }
 // Delete a summary
-export function deleteSummary(courseId, chapterId) {
-  const all = getSummaries();
-  const filtered = all.filter(
-    (s) => !(s.courseId === courseId && s.chapterId === chapterId),
-  );
-  saveSummaries(filtered);
-}
+export const deleteSummary = (courseId, chapterId) => {
+  if (typeof window === "undefined") return;
+
+  try {
+    const data = localStorage.getItem("summaries");
+    const summaries = data ? JSON.parse(data) : [];
+
+    const filtered = summaries.filter(
+      (item) =>
+        !(
+          String(item.courseId) === String(courseId) &&
+          String(item.chapterId) === String(chapterId)
+        ),
+    );
+
+    localStorage.setItem("summaries", JSON.stringify(filtered));
+  } catch (error) {
+    console.error("Error deleting summary:", error);
+  }
+};
 // Add a new summary
 export function addSummary(summary) {
   const summaries = getSummaries();
   summaries.push(summary);
-  saveSummaries(summaries); 
+  saveSummaries(summaries);
 }

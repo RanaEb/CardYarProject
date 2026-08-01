@@ -3,10 +3,16 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import { getSummary } from "@/app/lib/storage";
+import { getSummary, deleteSummary } from "@/app/lib/storage";
 import { Card } from "@/app/components/ui/card";
 import Button from "@/app/components/ui/button";
-import { NotebookText, Edit3, ArrowRight, PlusCircle } from "lucide-react";
+import {
+  NotebookText,
+  Edit3,
+  ArrowRight,
+  PlusCircle,
+  Trash2,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function SummaryPage() {
@@ -19,7 +25,14 @@ export default function SummaryPage() {
     const s = getSummary(courseId, chapterId);
     setSummary(s);
   }, [courseId, chapterId]);
+  const handleDelete = () => {
+    const confirmDelete = window.confirm("آیا از حذف این خلاصه مطمئن هستید؟");
 
+    if (!confirmDelete) return;
+
+    deleteSummary(courseId, chapterId);
+    router.push(`/courses2`);
+  };
   if (!summary) {
     return (
       <div className="min-h-screen bg-slate-50 p-6" dir="rtl">
@@ -63,7 +76,6 @@ export default function SummaryPage() {
   return (
     <div className="min-h-screen bg-slate-50 p-6" dir="rtl">
       <div className="max-w-2xl mx-auto">
- 
         <div className="flex items-center justify-between mb-6 mt-12">
           <div className="flex items-center gap-3">
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#EAF4FF] text-[#0077C8]">
@@ -93,25 +105,38 @@ export default function SummaryPage() {
         </Card>
 
         {/* Navigation Button */}
-        <div className=" flex flex-row gap-3 justify-between mt-6">
+        <div className="flex flex-row justify-between mt-6">
           <Link href="/courses2" className="w-full md:w-auto">
             <Button variant="back" size="lg">
               بازگشت به لیست درس‌ها
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            className="flex items-center gap-2"
-            onClick={() =>
-              router.push(
-                `/courses2/${courseId}/chapters/${chapterId}/summary/edit`,
-              )
-            }
-          >
-            <Edit3 size={16} />
-            <span>ویرایش</span>
-          </Button>
+
+          <div className="flex gap-3">
+            <Button
+              variant="outline"
+              size="lg"
+              className="flex items-center gap-2"
+              onClick={() =>
+                router.push(
+                  `/courses2/${courseId}/chapters/${chapterId}/summary/edit`,
+                )
+              }
+            >
+              <Edit3 size={16} />
+              <span>ویرایش</span>
+            </Button>
+
+            <Button
+              variant="danger"
+              size="lg"
+              className="flex items-center gap-2"
+              onClick={handleDelete}
+            >
+              <Trash2 size={16} />
+              <span>حذف</span>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
