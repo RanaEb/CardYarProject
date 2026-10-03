@@ -147,9 +147,14 @@ export default function Dashboard() {
           <div className="rounded-3xl border border-white/60 bg-gradient-to-br from-[#EAF6FF] to-[#E8FCFF] p-6 md:p-8 shadow-sm">
             <div className="flex flex-col md:flex-row-reverse items-center justify-between gap-5">
               <div className="w-full flex flex-row gap-4 justify-end md:justify-end order-2 md:order-1">
-                <Link href="/review">
+                 <Link href="/review">
                   <Button variant="secondary" size="lg">
                     شروع مرور
+                  </Button>
+                </Link>
+                <Link href="/add-card">
+                  <Button size="lg" className="bg-[#34A38A] text-white">
+                    ساخت فلش کارت
                   </Button>
                 </Link>
               </div>
